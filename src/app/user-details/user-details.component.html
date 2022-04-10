@@ -1,0 +1,43 @@
+<form [formGroup]="userData" (submit)="updateUserData();">
+  <table class="my-table" style="margin: 0 auto; width: 80%">
+    <tr>
+      <th width="25px">Avatar</th>
+      <th width="25px">ID</th>
+      <th width="30px">First Name</th>
+      <th width="30px">Last Name</th>
+      <th width="100px">Email</th>
+      <th width="100px">Action</th>
+    </tr>
+    <tr>
+      <td><img width="50px" src="{{userDetails.avatar}}" alt="avatar"></td>
+      <td>{{ userDetails.id }}</td>
+      <td>
+        <span *ngIf="!update">{{userDetails.first_name}}</span>
+        <input [ngClass]="{ 'input-error' : submitted && f.first_name.errors }" required *ngIf="update" matInput type="text" formControlName="first_name">
+        <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+          <div [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" *ngIf="f.first_name.errors.required">Title is required</div>
+        </div>
+      </td>
+      <td>
+        <span *ngIf="!update">{{userDetails.last_name}}</span>
+        <input [ngClass]="{ 'input-error': submitted && f.last_name.errors }" required *ngIf="update" matInput type="text" formControlName="last_name">
+        <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+          <div [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"  *ngIf="f.last_name.errors.required">Title is required</div>
+        </div>
+      </td>
+      <td>
+        <span *ngIf="!update">{{userDetails.email}}</span>
+        <input [ngClass]="{ 'input-error': submitted && f.email.errors }" required *ngIf="update" matInput type="text" formControlName="email">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  *ngIf="f.email.errors.required">Title is required</div>
+        </div>
+      </td>
+      <td>
+        <button *ngIf="!update" class="edit-btn" (click)="editUserData();">Edit</button>
+        <button style="margin-left: 15px;"  *ngIf="!update" class="cancel-btn" (click)="goHome();">Go Home</button>
+        <button *ngIf="update" class="update-btn">Update</button>
+        <button style="margin-left: 15px;" *ngIf="update" class="cancel-btn" (click)="cancel();">Cancel</button>
+      </td>
+    </tr>
+  </table> 
+</form>
