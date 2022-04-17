@@ -8,25 +8,25 @@
       <th width="100px">Email</th>
       <th width="100px">Action</th>
     </tr>
-    <tr>
-      <td><img width="50px" src="{{userDetails.avatar}}" alt="avatar"></td>
-      <td>{{ userDetails.id }}</td>
+    <tr *ngIf="user">
+      <td><img width="50px" src="{{ user.avatar }}" alt="avatar"></td>
+      <td>{{ user.id  }}</td>
       <td>
-        <span *ngIf="!update">{{userDetails.first_name}}</span>
+        <span *ngIf="!update">{{user.first_name }}</span>
         <input [ngClass]="{ 'input-error' : submitted && f.first_name.errors }" required *ngIf="update" matInput type="text" formControlName="first_name">
         <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
           <div [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" *ngIf="f.first_name.errors.required">Title is required</div>
         </div>
       </td>
       <td>
-        <span *ngIf="!update">{{userDetails.last_name}}</span>
+        <span *ngIf="!update">{{user.last_name }}</span>
         <input [ngClass]="{ 'input-error': submitted && f.last_name.errors }" required *ngIf="update" matInput type="text" formControlName="last_name">
         <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
           <div [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"  *ngIf="f.last_name.errors.required">Title is required</div>
         </div>
       </td>
       <td>
-        <span *ngIf="!update">{{userDetails.email}}</span>
+        <span *ngIf="!update">{{user.email }}</span>
         <input [ngClass]="{ 'input-error': submitted && f.email.errors }" required *ngIf="update" matInput type="text" formControlName="email">
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
           <div [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  *ngIf="f.email.errors.required">Title is required</div>

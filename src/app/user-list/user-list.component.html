@@ -1,6 +1,6 @@
-<ng-container *ngIf="users">
+<ng-container>
     <div class="my-container"> 
-        <div (click)="userDetails(user);"  class="my-card" *ngFor="let user of users.data">
+        <div (click)="userDetails(user);"  class="my-card" *ngFor="let user of users$ | async">
             <img style="width:100%" src="{{user.avatar}}" alt="avatar">
             <a class="center">{{ user.first_name + ' ' + user.last_name }}</a>
         </div>
